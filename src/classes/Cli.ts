@@ -404,12 +404,10 @@ class Cli {
         else if (answers.action === 'Wheelie') {
           const motorbike = this.vehicles.filter(vehicle => vehicle instanceof Motorbike) as Motorbike[];
 
-          if (motorbike[0].vin === this.selectedVehicleVin) {
-            motorbike[0].wheelie();
-            this.performActions();
+          if (motorbike.length > 0) {
+            motorbike.forEach(motorbike => motorbike.wheelie());
           } else {
-            console.log('Cannot perform wheelie on a car or truck');
-            this.performActions();
+            console.log('Cannot do a wheelie with a car or truck');
           }
         } else if (answers.action === 'Select or create another vehicle') {
           // start the cli to return to the initial prompt if the user wants to select or create another vehicle
